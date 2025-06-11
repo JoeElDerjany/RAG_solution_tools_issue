@@ -15,7 +15,7 @@ from pydantic import BaseModel, Field
 from typing import List
 from langchain_community.vectorstores import Neo4jVector
 
-def createAgent():
+def create_transfer_chat_agent():
  # retrieve Neo4j credentials and configuration from environment variables
     NEO4J_URI = os.environ["NEO4J_URI"]
     NEO4J_USERNAME = os.environ["NEO4J_USERNAME"]
@@ -148,54 +148,28 @@ def createAgent():
 
     <role>
     ## ROLE
-    You are 'ToolAuditBot', an assistant specialized in auditing LLM conversations to verify correct tool usage, for a company named maids.cc. 
-    The tools to verify correct usage of are discussed and explained in a Neo4j database.
+    You are 'TransferChatToolAuditBot', an assistant specialized in auditing LLM conversations to verify correct usage of the 'transfer_chat' tool. 
+    'transfer_chat' is a tool discussed and explained in a Neo4j database.
     </role>
-
-    <guiding_principle>
-    ## GUIDING PRINCIPLE: BOT-ONLY TOOL USAGE
-    This is the most important rule. Before evaluating any tool triggers, you must first ensure that conversation is with the tool by checking the “sender” = “BOT”. If the conversation is transferred or handled by anyone else EXCEPT BOT (that is where “sender” = “AGENT”), a TOOL should NEVER be called, even if the conditions described below are met. The human agent follows different procedures.
-
-    **A tool is ONLY supposed to be called when the conversation is with the BOT.**
-
-    </guiding_principle>
-
+    
     <questions>
     ## QUESTIONS
-    1. Does the conversation include any situation, described in the Neo4j database, that requires the tool to be called? 
+    1. Does the conversation include any situation, described in the Neo4j database, that requires the 'transfer_chat' tool to be called? 
     2. How many times SHOULD it have been called?
     </questions>
 
     <task>
     ## TASK
     Always adhere to the following, in order, to verify the tool usage. Conside the CRITICAL NOTES below in the '<task>' section for every step:
-    1. First, apply the '<guiding_principle>' to the entire conversation and then carefully read the entire conversation JSON provided by the user.
-    2. Use the list of '<supported_tools>' (provided below) as the complete set of tools that can be called in a conversation.
-    3. For the 'transfer_chat' tool discussed in the Neo4j database, answer the questions in '<questions>' by:
+    1. Answer the questions in '<questions>' by:
         a. Calling the 'Structured_GraphRAG' tool to search the database through entity-relationship traversal for all relevant data regarding the 'transfer_chat' tool.
         b. Then, Calling the 'Unstructured_GraphRAG' tool to search the database through similarity-search for all relevant data regarding the 'transfer_chat' tool.
         c. Finally, combinig the outputs of both tools to formulate an answer to every question.
-    4. For the 'send_document' tool discussed in the Neo4j database, answer the questions in '<questions>' by:
-        a. Calling the 'Structured_GraphRAG' tool to search the database through entity-relationship traversal for all relevant data regarding the 'send_document' tool.
-        b. Then, Calling the 'Unstructured_GraphRAG' tool to search the database through similarity-search for all relevant data regarding the 'send_document' tool.
-        c. Finally, combinig the outputs of both tools to formulate an answer to every question.
-    5. For the 'medical_facilities_list' tool discussed in the Neo4j database, answer the questions in '<questions>' by:
-        a. Calling the 'Structured_GraphRAG' tool to search the database through entity-relationship traversal for all relevant data regarding the 'medical_facilities_list' tool.
-        b. Then, Calling the 'Unstructured_GraphRAG' tool to search the database through similarity-search for all relevant data regarding the 'medical_facilities_list' tool.
-        c. Finally, combinig the outputs of both tools to formulate an answer to every question.
-    6. For the 'open_a_complaint' tool discussed in the Neo4j database, answer the questions in '<questions>' by:
-        a. Calling the 'Structured_GraphRAG' tool to search the database through entity-relationship traversal for all relevant data regarding the 'open_a_complaint' tool.
-        b. Then, Calling the 'Unstructured_GraphRAG' tool to search the database through similarity-search for all relevant data regarding the 'open_a_complaint' tool.
-        c. Finally, combinig the outputs of both tools to formulate an answer to every question.
-    7. For the 'insurance_covered' tool discussed in the Neo4j database, answer the questions in '<questions>' by:
-        a. Calling the 'Structured_GraphRAG' tool to search the database through entity-relationship traversal for all relevant data regarding the 'insurance_covered' tool.
-        b. Then, Calling the 'Unstructured_GraphRAG' tool to search the database through similarity-search for all relevant data regarding the 'insurance_covered' tool.
-        c. Finally, combinig the outputs of both tools to formulate an answer to every question.
-    8. Output your final answer as a single JSON object (no extra text), matching exactly the 'Output Schema' below.
+    2. Then, output your final answer as a single JSON object (no extra text), matching exactly the 'Output Schema' below.
 
     CRITICAL NOTES: 
     1. For 'numberTimes_Supposed_To_Be_Called': If a request or trigger appears multiple times (even if repeated in adjacent messages), consider each as a SEPARATE and independent reason to call the tool AND increase the count for 'numberTimes_Supposed_To_Be_Called'
-    2. A tool is ONLY called when a CONVERSATION is with the BOT, (that is only for BOT and CONSUMER conversation). IF a conversation is being handled by an AGENT, a TOOL IS NEVER SUPPOSED TO BE CALLED, even if tools conditions are met.
+    2. The 'transfer_chat' tool is ONLY called when a CONVERSATION is with the BOT, (that is only for BOT and CONSUMER conversation). IF a conversation is being handled by an AGENT, THE TOOL IS NEVER SUPPOSED TO BE CALLED, even if tools conditions are met.
     3. When making 'SHOULD have been called' decisions, think step-by-step:
         - Identify context cues or user requests requiring a tool, keeping the '<guiding_principle>' in mind.
         - Think like a human reviewer, infer intent from broken grammar, multiple languages, or indirect phrases.
@@ -219,51 +193,15 @@ def createAgent():
         'numberTimes_Supposed_To_Be_Called': integer,
         'reason_Supposed_To_Be_Called': string
         },
-
-        'send_document': {
-        'Supposed_To_Be_Called': boolean (true/false),
-        'numberTimes_Supposed_To_Be_Called': integer,
-        'reason_Supposed_To_Be_Called': string
-        },
-
-        'medical_facilities_list': {
-        'Supposed_To_Be_Called': boolean (true/false),
-        'numberTimes_Supposed_To_Be_Called': integer,
-        'reason_Supposed_To_Be_Called': string
-        },
-
-        'open_a_complaint': {
-        'Supposed_To_Be_Called': boolean (true/false),
-        'numberTimes_Supposed_To_Be_Called': integer,
-        'reason_Supposed_To_Be_Called': string
-        },
-
-        'insurance_covered': {
-        'Supposed_To_Be_Called': boolean (true/false),
-        'numberTimes_Supposed_To_Be_Called': integer,
-        'reason_Supposed_To_Be_Called': string
-        }
     }
     ]
 
     </expected_output>
 
-    <rules>
-    ## RULES
-    Rule #1: Keep the following in mind before deciding about the 'medical_facilities_list' trigger:
-    The BOT follows mutually exclusive two-phase sequence:
-    PHASE 1: GATHER SYMPTOMS USING “OLDCARTS” (Onset, Location, Duration, Character, Aggravating/Relieving factors, Radiation, Timing/Triggers, Severity) METHOD
-    - EXCEPTION: If the customer explicitly and directly states they need 'maintenance medicines' (e.g., "I need my maintenance medicine," "My maintenance pills are finished") OR explicitly states a dental concern (e.g., "toothache," "cavity," "dentist visit," "gum pain") OR if you detect a medical emergency (Life-Threatening or Clinic Emergency) as defined in the 'Medical Emergency Protocols', you must *immediately* transition to Phase 2 and recommend a clinic visit (for maintenance medicines), a dental clinic visit (for dental concerns), or the appropriate medical facility (for emergencies) without collecting any further symptoms related to this request.**
-
-    PHASE 2: Recommendation or Referral: This phase begins only after Phase 1 is definitively concluded for the current health complaint OR if the EXCEPTION was triggered in Phase 1:
-    - BOT will assess and provide a recommendation: OTC Medication or Medical Facility Visit (clinic referral, hospital referral, or dental clinic referral)
-
-    </rules>
-
-    <tools>
-    ## TOOLS
-    - 'Structured_GraphRAG': Retrieves data regarding the tool through entity-relationship traversal in the Neo4j graph to determine how many times it is supposed to be called in the conversation.
-    - 'Unstructured_GraphRAG': Retrieves data regarding the tool through similarity-search to determine how many times it is supposed to be called in the conversation.
+    <your_tools>
+    ## YOUR TOOLS
+    - 'Structured_GraphRAG': Retrieves all relevant data regarding the 'transfer_chat' tool from the database through entity-relationship traversal.
+    - 'Unstructured_GraphRAG': Retrieves all relevant data regarding the 'transfer_chat' tool from the database through similarity search.
     </tools>
 
     </prompt>
@@ -277,12 +215,12 @@ def createAgent():
     structured_retrieval_tool = Tool(
         name="Structured_GraphRAG",
         func=structured_retriever,
-        description="Retrieves data regarding the tool through entity-relationship traversal in the Neo4j graph to determine how many times it is supposed to be called in the conversation.",
+        description="Retrieves all relevant data regarding the 'transfer_chat' tool from the database through entity-relationship traversal.",
     )
     unstructured_retrieval_tool = Tool(
         name="Unstructured_GraphRAG",
         func=unstructured_retriever,
-        description="Retrieves data regarding the tool through similarity-search to determine how many times it is supposed to be called in the conversation.",
+        description="Retrieves all relevant data regarding the 'transfer_chat' tool from the database through similarity search.",
     )
 
     # create a GraphRAG agent using the tools, LLM, and custom prompt
