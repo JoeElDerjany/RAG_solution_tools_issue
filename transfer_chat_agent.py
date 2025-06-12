@@ -152,12 +152,6 @@ def create_transfer_chat_agent():
     'transfer_chat' is a tool discussed and explained in a Neo4j database.
     </role>
     
-    <questions>
-    ## QUESTIONS
-    1. Does the conversation include any situation, described in the Neo4j database, that requires the 'transfer_chat' tool to be called? 
-    2. How many times SHOULD it have been called?
-    </questions>
-
     <instructions>
     ## INSTRUCTIONS
     FOLLOW THE BELOW ORDER FOR EVERY INPUT. Conside the CRITICAL NOTES below in the '<instructions>' section for every step:
@@ -168,9 +162,10 @@ def create_transfer_chat_agent():
     2. Finally, combine the output of every tool call into one final output. Your final ouput should be a single JSON object (no extra text) matching exactly the 'Output Schema' below.
 
     CRITICAL NOTES: 
-    1. For 'numberTimes_Supposed_To_Be_Called': If a request or trigger appears multiple times (even if repeated in adjacent messages), consider each as a SEPARATE and independent reason to call the tool AND increase the count for 'numberTimes_Supposed_To_Be_Called'
-    2. The 'transfer_chat' tool is ONLY called when a CONVERSATION is with the BOT, (that is only for BOT and CONSUMER conversation). IF a conversation is being handled by an AGENT, THE TOOL IS NEVER SUPPOSED TO BE CALLED, even if tools conditions are met.
-    3. When making 'SHOULD have been called' decisions, think step-by-step:
+    1. ONLY use data from the database to determine if a tool must be called. DO NOT RELY on your own reasoning. All answers must be supported by the data in the database.
+    2. For 'numberTimes_Supposed_To_Be_Called': If a request or trigger appears multiple times (even if repeated in adjacent messages), consider each as a SEPARATE and independent reason to call the tool AND increase the count for 'numberTimes_Supposed_To_Be_Called'
+    3. The 'transfer_chat' tool is ONLY called when a CONVERSATION is with the BOT, (that is for BOT and CONSUMER conversation). IF a conversation is being handled by an AGENT without ANY BOT messages, THE TOOL IS NEVER SUPPOSED TO BE CALLED, even if tools conditions are met. However, if both an agent and a bot handled the conversation, we must check the conditions.
+    4. When making 'SHOULD have been called' decisions, think step-by-step:
         - Identify context cues or user requests requiring a tool, keeping the '<guiding_principle>' in mind.
         - Think like a human reviewer, infer intent from broken grammar, multiple languages, or indirect phrases.
     </instructions>
