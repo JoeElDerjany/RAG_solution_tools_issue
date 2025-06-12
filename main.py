@@ -1,5 +1,6 @@
 from transfer_chat_agent import create_transfer_chat_agent
 import csv
+import time
 
 def csv_to_dict(filename):
     result = {}
@@ -25,8 +26,9 @@ if __name__ == "__main__":
     chats = csv_to_dict("BOT Tools Metrics - 12th June testing RAW.csv")
     agent = create_transfer_chat_agent()
     outputs = {}
-    for i in range(20):
+    for i in range(70):
         print(i)
         output = agent.invoke({'input': chats[i][1]})
         outputs[i] = (chats[i][0], chats[i][1], output['output'])
+        time.sleep(3)
     dict_to_csv(outputs)

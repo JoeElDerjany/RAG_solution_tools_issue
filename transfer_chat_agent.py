@@ -5,6 +5,7 @@ load_dotenv()
 
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
+from langchain_anthropic import ChatAnthropic
 from langchain.tools import Tool
 from langchain.agents import create_react_agent, AgentExecutor
 from langchain_core.output_parsers import StrOutputParser
@@ -24,10 +25,19 @@ def create_transfer_chat_agent():
 
     # retrieve OpenAI API key from environment variables
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+    CLAUDE_API_KEY = os.getenv("CLAUDE_API_KEY")
 
     # initialize OpenAI embeddings and the GPT-4 model
     embeddings = OpenAIEmbeddings()
+
     llm = ChatOpenAI(api_key=OPENAI_API_KEY, temperature=0, model="gpt-4o")
+    # llm = ChatAnthropic(
+    #         api_key = CLAUDE_API_KEY,
+    #         model="claude-3-7-sonnet-latest",
+    #         temperature=1, 
+    #         max_tokens=2500
+    #     )
+
     # connect to the Neo4j graph database
     kg = Neo4jGraph(
         url=NEO4J_URI,
@@ -155,11 +165,21 @@ def create_transfer_chat_agent():
     <instructions>
     ## INSTRUCTIONS
     FOLLOW THE BELOW ORDER FOR EVERY INPUT. Conside the CRITICAL NOTES below in the '<instructions>' section for every step:
-    1. Answer the questions in '<questions>' by:
-        a. Call the 'Structured_GraphRAG' tool to search the database through entity-relationship traversal to check whether the conversation includes any situation that requires the 'transfer_chat' tool to be called, and if yes, how many times.
-        b. Then, Calling the 'Unstructured_GraphRAG' tool to search the database through similarity-search to check whether the conversation includes any situation that requires the 'transfer_chat' tool to be called, and if yes, how many times.
-        c. Finally, combinig the outputs of both tools to formulate an answer to every question.
-    2. Finally, combine the output of every tool call into one final output. Your final ouput should be a single JSON object (no extra text) matching exactly the 'Output Schema' below.
+    1. Call the 'Structured_GraphRAG' tool to search the database through entity-relationship traversal to check whether the conversation includes any situation that requires the 'transfer_chat' tool to be called, and if yes, how many times.
+     - Thought: [your reasoning for using this tool]
+     - Action: Structured_GraphRAG[<your input here>]
+
+    2. Then, call the 'Unstructured_GraphRAG' tool to search the database through similarity-search to check whether the conversation includes any situation that requires the 'transfer_chat' tool to be called, and if yes, how many times.
+     - Thought: [your reasoning for using this tool]
+     - Action: Unstructured_GraphRAG[<your input here>]
+
+    3. Combine the output of every tool call into one final result.
+     - Thought: [your reasoning about what the final answer should be]
+
+    4. If you now have your final output, ALWAYS finish with:
+     - Thought: I now have all the necessary information.
+     - Final Answer: <your single JSON object output — matching the Output Schema in <expected_output> exactly and with no extra text>
+
 
     CRITICAL NOTES: 
     1. ONLY use data from the database to determine if a tool must be called. DO NOT RELY on your own reasoning. All answers must be supported by the data in the database.
@@ -168,6 +188,11 @@ def create_transfer_chat_agent():
     4. When making 'SHOULD have been called' decisions, think step-by-step:
         - Identify context cues or user requests requiring a tool, keeping the '<guiding_principle>' in mind.
         - Think like a human reviewer, infer intent from broken grammar, multiple languages, or indirect phrases.
+
+    IMPORTANT:
+    - Do NOT add any more Thoughts, Actions, or Observations after the Final Answer. Once you output Final Answer, STOP.
+    - Your final output must be a single JSON object matching the Output Schema in <expected_output>, and it must be preceded by:
+        Final Answer: <your JSON>
     </instructions>
 
     <input_details>
