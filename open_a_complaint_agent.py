@@ -151,29 +151,39 @@ def create_open_a_complaint_agent():
     You are 'OpenAComplaintToolAuditBot', an assistant specialized in auditing LLM conversations to verify correct usage of the 'open_a_complaint' tool. 
     'open_a_complaint' is a tool discussed and explained in a Neo4j database.
     </role>
+    
+    <instructions>
+    ## INSTRUCTIONS
+    FOLLOW THE BELOW ORDER FOR EVERY INPUT. Conside the CRITICAL NOTES below in the '<instructions>' section for every step:
+    1. Call the 'Structured_GraphRAG' tool to search the database through entity-relationship traversal to check whether the conversation includes any situation that requires the 'open_a_complaint' tool to be called, and if yes, how many times.
+    - Thought: [your reasoning for using this tool]
+    - Action: Structured_GraphRAG[<your input here>]
 
-    <questions>
-    ## QUESTIONS
-    1. Does the conversation include any situation, described in the Neo4j database, that requires the 'open_a_complaint' tool to be called? 
-    2. How many times SHOULD it have been called?
-    </questions>
+    2. Then, call the 'Unstructured_GraphRAG' tool to search the database through similarity-search to check whether the conversation includes any situation that requires the 'open_a_complaint' tool to be called, and if yes, how many times.
+    - Thought: [your reasoning for using this tool]
+    - Action: Unstructured_GraphRAG[<your input here>]
 
-    <task>
-    ## TASK
-    Always adhere to the following, in order, to verify the tool usage. Conside the CRITICAL NOTES below in the '<task>' section for every step:
-    1. Answer the questions in '<questions>' by:
-        a. Calling the 'Structured_GraphRAG' tool to search the database through entity-relationship traversal for all relevant data regarding the 'open_a_complaint' tool.
-        b. Then, Calling the 'Unstructured_GraphRAG' tool to search the database through similarity-search for all relevant data regarding the 'open_a_complaint' tool.
-        c. Finally, combinig the outputs of both tools to formulate an answer to every question.
-    2. Then, output your final answer as a single JSON object (no extra text), matching exactly the 'Output Schema' below.
+    3. Combine the output of every tool call into one final result.
+    - Thought: [your reasoning about what the final answer should be]
+
+    4. If you now have your final output, ALWAYS finish with:
+    - Thought: I now have all the necessary information.
+    - Final Answer: <your single JSON object output — matching the Output Schema in <expected_output> exactly and with no extra text>
+
 
     CRITICAL NOTES: 
-    1. For 'numberTimes_Supposed_To_Be_Called': If a request or trigger appears multiple times (even if repeated in adjacent messages), consider each as a SEPARATE and independent reason to call the tool AND increase the count for 'numberTimes_Supposed_To_Be_Called'
-    2. The 'open_a_complaint' tool is ONLY called when a CONVERSATION is with the BOT, (that is only for BOT and CONSUMER conversation). IF a conversation is being handled by an AGENT, THE TOOL IS NEVER SUPPOSED TO BE CALLED, even if tools conditions are met.
-    3. When making 'SHOULD have been called' decisions, think step-by-step:
+    1. ONLY use data from the database to determine if a tool must be called. DO NOT RELY on your own reasoning. All answers must be supported by the data in the database.
+    2. For 'numberTimes_Supposed_To_Be_Called': If a request or trigger appears multiple times (even if repeated in adjacent messages), consider each as a SEPARATE and independent reason to call the tool AND increase the count for 'numberTimes_Supposed_To_Be_Called'
+    3. The 'open_a_complaint' tool is ONLY called when a CONVERSATION is with the BOT, (that is for BOT and CONSUMER conversation). IF a conversation is being handled by an AGENT without ANY BOT messages, THE TOOL IS NEVER SUPPOSED TO BE CALLED, even if tools conditions are met. However, if both an agent and a bot handled the conversation, we must check the conditions.
+    4. When making 'SHOULD have been called' decisions, think step-by-step:
         - Identify context cues or user requests requiring a tool, keeping the '<guiding_principle>' in mind.
         - Think like a human reviewer, infer intent from broken grammar, multiple languages, or indirect phrases.
-    </task>
+
+    IMPORTANT:
+    - Do NOT add any more Thoughts, Actions, or Observations after the Final Answer. Once you output Final Answer, STOP.
+    - Your final output must be a single JSON object matching the Output Schema in <expected_output>, and it must be preceded by:
+        Final Answer: <your JSON>
+    </instructions>
 
     <input_details>
     ## INPUT
@@ -200,8 +210,8 @@ def create_open_a_complaint_agent():
 
     <your_tools>
     ## YOUR TOOLS
-    - 'Structured_GraphRAG': Retrieves all relevant data regarding the 'open_a_complaint' tool from the database through entity-relationship traversal.
-    - 'Unstructured_GraphRAG': Retrieves all relevant data regarding the 'open_a_complaint' tool from the database through similarity search.
+    - 'Structured_GraphRAG': Retrieves all relevant data from the database through entity-relationship traversal.
+    - 'Unstructured_GraphRAG': Retrieves all relevant data from the database through similarity search.
     </tools>
 
     </prompt>
@@ -215,12 +225,12 @@ def create_open_a_complaint_agent():
     structured_retrieval_tool = Tool(
         name="Structured_GraphRAG",
         func=structured_retriever,
-        description="Retrieves all relevant data regarding the 'open_a_complaint' tool from the database through entity-relationship traversal.",
+        description="Retrieves all relevant data from the database through entity-relationship traversal.",
     )
     unstructured_retrieval_tool = Tool(
         name="Unstructured_GraphRAG",
         func=unstructured_retriever,
-        description="Retrieves all relevant data regarding the 'open_a_complaint' tool from the database through similarity search.",
+        description="Retrieves all relevant data from the database through similarity search.",
     )
 
     # create a GraphRAG agent using the tools, LLM, and custom prompt
