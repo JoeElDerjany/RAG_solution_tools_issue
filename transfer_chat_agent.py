@@ -158,14 +158,14 @@ def create_transfer_chat_agent():
     2. How many times SHOULD it have been called?
     </questions>
 
-    <task>
-    ## TASK
-    Always adhere to the following, in order, to verify the tool usage. Conside the CRITICAL NOTES below in the '<task>' section for every step:
+    <instructions>
+    ## INSTRUCTIONS
+    FOLLOW THE BELOW ORDER FOR EVERY INPUT. Conside the CRITICAL NOTES below in the '<instructions>' section for every step:
     1. Answer the questions in '<questions>' by:
-        a. Calling the 'Structured_GraphRAG' tool to search the database through entity-relationship traversal for all relevant data regarding the 'transfer_chat' tool.
-        b. Then, Calling the 'Unstructured_GraphRAG' tool to search the database through similarity-search for all relevant data regarding the 'transfer_chat' tool.
+        a. Call the 'Structured_GraphRAG' tool to search the database through entity-relationship traversal to check whether the conversation includes any situation that requires the 'transfer_chat' tool to be called, and if yes, how many times.
+        b. Then, Calling the 'Unstructured_GraphRAG' tool to search the database through similarity-search to check whether the conversation includes any situation that requires the 'transfer_chat' tool to be called, and if yes, how many times.
         c. Finally, combinig the outputs of both tools to formulate an answer to every question.
-    2. Then, output your final answer as a single JSON object (no extra text), matching exactly the 'Output Schema' below.
+    2. Finally, combine the output of every tool call into one final output. Your final ouput should be a single JSON object (no extra text) matching exactly the 'Output Schema' below.
 
     CRITICAL NOTES: 
     1. For 'numberTimes_Supposed_To_Be_Called': If a request or trigger appears multiple times (even if repeated in adjacent messages), consider each as a SEPARATE and independent reason to call the tool AND increase the count for 'numberTimes_Supposed_To_Be_Called'
@@ -173,7 +173,7 @@ def create_transfer_chat_agent():
     3. When making 'SHOULD have been called' decisions, think step-by-step:
         - Identify context cues or user requests requiring a tool, keeping the '<guiding_principle>' in mind.
         - Think like a human reviewer, infer intent from broken grammar, multiple languages, or indirect phrases.
-    </task>
+    </instructions>
 
     <input_details>
     ## INPUT
@@ -200,8 +200,8 @@ def create_transfer_chat_agent():
 
     <your_tools>
     ## YOUR TOOLS
-    - 'Structured_GraphRAG': Retrieves all relevant data regarding the 'transfer_chat' tool from the database through entity-relationship traversal.
-    - 'Unstructured_GraphRAG': Retrieves all relevant data regarding the 'transfer_chat' tool from the database through similarity search.
+    - 'Structured_GraphRAG': Retrieves all relevant data from the database through entity-relationship traversal.
+    - 'Unstructured_GraphRAG': Retrieves all relevant data from the database through similarity search.
     </tools>
 
     </prompt>
@@ -215,12 +215,12 @@ def create_transfer_chat_agent():
     structured_retrieval_tool = Tool(
         name="Structured_GraphRAG",
         func=structured_retriever,
-        description="Retrieves all relevant data regarding the 'transfer_chat' tool from the database through entity-relationship traversal.",
+        description="Retrieves relevant data from the database through entity-relationship traversal.",
     )
     unstructured_retrieval_tool = Tool(
         name="Unstructured_GraphRAG",
         func=unstructured_retriever,
-        description="Retrieves all relevant data regarding the 'transfer_chat' tool from the database through similarity search.",
+        description="Retrieves all relevant data from the database through similarity search.",
     )
 
     # create a GraphRAG agent using the tools, LLM, and custom prompt
