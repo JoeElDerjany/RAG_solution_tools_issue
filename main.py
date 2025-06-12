@@ -10,7 +10,7 @@ def csv_to_dict(filename):
     return result
 
 def dict_to_csv(data_dict):
-    with open("Tool Metrics - June 8 - kartavya's results 2 - transfer_chat agent results.csv", mode='w', newline='', encoding='utf-8') as csvfile:
+    with open("BOT Tools Metrics - 12th June testing RAW - transfer_chat agent results.csv", mode='w', newline='', encoding='utf-8') as csvfile:
         writer = csv.writer(csvfile)
         # Write header
         writer.writerow(['conv_id', 'cleaned_conversation', 'transfer_chat_agent_output'])
@@ -22,10 +22,10 @@ def dict_to_csv(data_dict):
 
 
 if __name__ == "__main__":
-    chats = csv_to_dict("Tool Metrics - June 8 - kartavya's results 2.csv")
+    chats = csv_to_dict("BOT Tools Metrics - 12th June testing RAW.csv")
     agent = create_transfer_chat_agent()
     outputs = {}
-    for i in range(34):
+    for i in range(20):
         print(i)
         output = agent.invoke({'input': chats[i][1]})
         outputs[i] = (chats[i][0], chats[i][1], output['output'])
