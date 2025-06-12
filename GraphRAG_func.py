@@ -170,28 +170,27 @@ def createAgent():
     ## TASK
     Always adhere to the following, in order, to verify the tool usage. Conside the CRITICAL NOTES below in the '<task>' section for every step:
     1. First, apply the '<guiding_principle>' to the entire conversation and then carefully read the entire conversation JSON provided by the user.
-    2. Use the list of '<supported_tools>' (provided below) as the complete set of tools that can be called in a conversation.
-    3. For the 'transfer_chat' tool discussed in the Neo4j database, answer the questions in '<questions>' by:
+    2. For the 'transfer_chat' tool discussed in the Neo4j database, answer the questions in '<questions>' by:
         a. Calling the 'Structured_GraphRAG' tool to search the database through entity-relationship traversal for all relevant data regarding the 'transfer_chat' tool.
         b. Then, Calling the 'Unstructured_GraphRAG' tool to search the database through similarity-search for all relevant data regarding the 'transfer_chat' tool.
         c. Finally, combinig the outputs of both tools to formulate an answer to every question.
-    4. For the 'send_document' tool discussed in the Neo4j database, answer the questions in '<questions>' by:
+    3. For the 'send_document' tool discussed in the Neo4j database, answer the questions in '<questions>' by:
         a. Calling the 'Structured_GraphRAG' tool to search the database through entity-relationship traversal for all relevant data regarding the 'send_document' tool.
         b. Then, Calling the 'Unstructured_GraphRAG' tool to search the database through similarity-search for all relevant data regarding the 'send_document' tool.
         c. Finally, combinig the outputs of both tools to formulate an answer to every question.
-    5. For the 'medical_facilities_list' tool discussed in the Neo4j database, answer the questions in '<questions>' by:
+    4. For the 'medical_facilities_list' tool discussed in the Neo4j database, answer the questions in '<questions>' by:
         a. Calling the 'Structured_GraphRAG' tool to search the database through entity-relationship traversal for all relevant data regarding the 'medical_facilities_list' tool.
         b. Then, Calling the 'Unstructured_GraphRAG' tool to search the database through similarity-search for all relevant data regarding the 'medical_facilities_list' tool.
         c. Finally, combinig the outputs of both tools to formulate an answer to every question.
-    6. For the 'open_a_complaint' tool discussed in the Neo4j database, answer the questions in '<questions>' by:
+    5. For the 'open_a_complaint' tool discussed in the Neo4j database, answer the questions in '<questions>' by:
         a. Calling the 'Structured_GraphRAG' tool to search the database through entity-relationship traversal for all relevant data regarding the 'open_a_complaint' tool.
         b. Then, Calling the 'Unstructured_GraphRAG' tool to search the database through similarity-search for all relevant data regarding the 'open_a_complaint' tool.
         c. Finally, combinig the outputs of both tools to formulate an answer to every question.
-    7. For the 'insurance_covered' tool discussed in the Neo4j database, answer the questions in '<questions>' by:
+    6. For the 'insurance_covered' tool discussed in the Neo4j database, answer the questions in '<questions>' by:
         a. Calling the 'Structured_GraphRAG' tool to search the database through entity-relationship traversal for all relevant data regarding the 'insurance_covered' tool.
         b. Then, Calling the 'Unstructured_GraphRAG' tool to search the database through similarity-search for all relevant data regarding the 'insurance_covered' tool.
         c. Finally, combinig the outputs of both tools to formulate an answer to every question.
-    8. Output your final answer as a single JSON object (no extra text), matching exactly the 'Output Schema' below.
+    7. Output your final answer as a single JSON object (no extra text), matching exactly the 'Output Schema' below.
 
     CRITICAL NOTES: 
     1. For 'numberTimes_Supposed_To_Be_Called': If a request or trigger appears multiple times (even if repeated in adjacent messages), consider each as a SEPARATE and independent reason to call the tool AND increase the count for 'numberTimes_Supposed_To_Be_Called'
@@ -262,8 +261,8 @@ def createAgent():
 
     <tools>
     ## TOOLS
-    - 'Structured_GraphRAG': Retrieves data regarding the tool through entity-relationship traversal in the Neo4j graph to determine how many times it is supposed to be called in the conversation.
-    - 'Unstructured_GraphRAG': Retrieves data regarding the tool through similarity-search to determine how many times it is supposed to be called in the conversation.
+    - 'Structured_GraphRAG': Retrieves all relevant data regarding a tool from the database through entity-relationship traversal.
+    - 'Unstructured_GraphRAG': Retrieves all relevant data regarding a tool from the database through similarity search.
     </tools>
 
     </prompt>
@@ -277,12 +276,12 @@ def createAgent():
     structured_retrieval_tool = Tool(
         name="Structured_GraphRAG",
         func=structured_retriever,
-        description="Retrieves data regarding the tool through entity-relationship traversal in the Neo4j graph to determine how many times it is supposed to be called in the conversation.",
+        description="Retrieves all relevant data regarding a tool from the database through entity-relationship traversal.",
     )
     unstructured_retrieval_tool = Tool(
         name="Unstructured_GraphRAG",
         func=unstructured_retriever,
-        description="Retrieves data regarding the tool through similarity-search to determine how many times it is supposed to be called in the conversation.",
+        description="Retrieves all relevant data regarding a tool from the database through similarity search.",
     )
 
     # create a GraphRAG agent using the tools, LLM, and custom prompt
