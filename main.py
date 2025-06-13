@@ -1,4 +1,4 @@
-from transfer_chat_agent import create_transfer_chat_agent
+from medical_facilities_list_agent import create_medical_facilities_list_agent
 import csv
 import time
 
@@ -11,7 +11,7 @@ def csv_to_dict(filename):
     return result
 
 def dict_to_csv(data_dict):
-    with open("BOT Tools Metrics - 12th June testing RAW - transfer_chat agent results.csv", mode='w', newline='', encoding='utf-8') as csvfile:
+    with open("BOT Tools Metrics - 12th June testing RAW - medical_facilities_list agent results.csv", mode='w', newline='', encoding='utf-8') as csvfile:
         writer = csv.writer(csvfile)
         # Write header
         writer.writerow(['conv_id', 'cleaned_conversation', 'transfer_chat_agent_output'])
@@ -24,7 +24,7 @@ def dict_to_csv(data_dict):
 
 if __name__ == "__main__":
     chats = csv_to_dict("BOT Tools Metrics - 12th June testing RAW.csv")
-    agent = create_transfer_chat_agent()
+    agent = create_medical_facilities_list_agent()
     outputs = {}
     for i in range(70):
         print(i)
