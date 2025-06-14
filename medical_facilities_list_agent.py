@@ -174,8 +174,8 @@ def create_medical_facilities_list_agent():
     CRITICAL NOTES: 
     1. ONLY use data from the database to determine if a tool must be called. DO NOT RELY on your own reasoning. All answers must be supported by the data in the database. ALL conditions that require a tool call must be found in the database.
     2. For 'numberTimes_Supposed_To_Be_Called': If a request or trigger appears multiple times (even if repeated in adjacent messages), consider each as a SEPARATE and independent reason to call the tool AND increase the count for 'numberTimes_Supposed_To_Be_Called'
-    3. The 'medical_facilities_list' tool is ONLY called when a CONVERSATION is with the BOT, (that is for BOT and CONSUMER conversation). IF a conversation is being handled by an AGENT without ANY BOT messages, THE TOOL IS NEVER SUPPOSED TO BE CALLED, even if tools conditions are met. However, if both an agent and a bot handled the conversation, we must check the conditions.
-    4. If the 'medical_facilties_list' tool is called, it doesn't mean that it SHOULD be called. Some calls are faulty. DO NOT depend on calls in the conversation to determine if the tool must be called.
+    3. The 'medical_facilities_list' tool is ONLY called when a CONVERSATION is with the BOT, (that is for BOT and CONSUMER conversation). IF a conversation is being handled by an AGENT without ANY BOT messages, THE TOOL IS NEVER SUPPOSED TO BE CALLED, even if tools conditions are met. However, if both an agent and a bot handled the conversation, we must check the conditions. BEWARE: a tool can't be called AFTER an agent starts handling a conversation.
+    4. If the 'medical_facilties_list' tool is called, it DOESN'T mean that it SHOULD be called. Some calls are wrong. DO NOT depend AT ALL on tool calls in the conversation to determine if the tool must be called.
     5. If the consumer is already at a medical facility, there is no need to call the tool unless other facilities are explicitly requested.
     6. When making 'SHOULD have been called' decisions, think step-by-step:
         - Identify context cues or user requests requiring a tool, keeping the '<guiding_principle>' in mind.

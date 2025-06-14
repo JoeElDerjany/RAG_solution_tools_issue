@@ -335,11 +335,11 @@ CH01224fe1a0cf4959b9d96b0b9b3a213a,"{
   ]
 }","[
     {
-        ""chatId"": ""CH01224fe1a0cf4959b9d96b0b9b3a213a"",
-        ""medical_facilities_list"": {
-            ""Supposed_To_Be_Called"": true,
-            ""numberTimes_Supposed_To_Be_Called"": 1,
-            ""reason_Supposed_To_Be_Called"": ""The consumer explicitly requested information about which pharmacy they could go to, indicating a need for a list of medical facilities.""
+        'chatId': 'CH01224fe1a0cf4959b9d96b0b9b3a213a',
+        'medical_facilities_list': {
+            'Supposed_To_Be_Called': true,
+            'numberTimes_Supposed_To_Be_Called': 1,
+            'reason_Supposed_To_Be_Called': 'The consumer explicitly mentioned needing maintenance medicine, which requires immediate transition to Phase 2 and recommending a clinic visit.'
         }
     }
 ]"
@@ -442,7 +442,7 @@ CH0225f0b1339249849a13bd371c548730,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': true,
             'numberTimes_Supposed_To_Be_Called': 1,
-            'reason_Supposed_To_Be_Called': 'The consumer explicitly stated a dental concern, which requires immediate transition to Phase 2 and recommendation of a dental clinic visit.'
+            'reason_Supposed_To_Be_Called': 'The consumer explicitly requested assistance with scheduling a dental filling, which is a dental concern requiring a dental clinic visit recommendation.'
         }
     }
 ]"
@@ -487,11 +487,11 @@ CH04c787f0efc74b4085a1859d944b4a92,"{
   ]
 }","[
     {
-        'chatId': 'CH04c787f0efc74b4085a1859d944b4a92',
-        'medical_facilities_list': {
-            'Supposed_To_Be_Called': false,
-            'numberTimes_Supposed_To_Be_Called': 0,
-            'reason_Supposed_To_Be_Called': ''
+        ""chatId"": ""CH04c787f0efc74b4085a1859d944b4a92"",
+        ""medical_facilities_list"": {
+            ""Supposed_To_Be_Called"": false,
+            ""numberTimes_Supposed_To_Be_Called"": 0,
+            ""reason_Supposed_To_Be_Called"": ""The conversation did not include any explicit requests or conditions that required the 'medical_facilities_list' tool to be called. The consumer did not mention any symptoms, medical emergencies, or requests for medical facility information.""
         }
     }
 ]"
@@ -542,11 +542,11 @@ CH0690870a2f134192ad7e5fe93de2c98e,"{
   ]
 }","[
     {
-        'chatId': 'CH0690870a2f134192ad7e5fe93de2c98e',
-        'medical_facilities_list': {
-            'Supposed_To_Be_Called': false,
-            'numberTimes_Supposed_To_Be_Called': 0,
-            'reason_Supposed_To_Be_Called': ''
+        ""chatId"": ""CH0690870a2f134192ad7e5fe93de2c98e"",
+        ""medical_facilities_list"": {
+            ""Supposed_To_Be_Called"": false,
+            ""numberTimes_Supposed_To_Be_Called"": 0,
+            ""reason_Supposed_To_Be_Called"": ""The conversation did not reach a point where a medical facility recommendation was necessary. The bot was still in the symptom collection phase and did not conclude it or identify any emergency or explicit request for a facility.""
         }
     }
 ]"
@@ -656,7 +656,7 @@ CH075600512a26468a972e69b79be7b88b,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': false,
             'numberTimes_Supposed_To_Be_Called': 0,
-            'reason_Supposed_To_Be_Called': ''
+            'reason_Supposed_To_Be_Called': 'The conversation was handled by an agent after the initial bot response, and the tool should not be called once an agent is involved.'
         }
     }
 ]"
@@ -856,7 +856,16 @@ CH08b5d7d8e7eb41af8d825bdab0a6a03c,"{
       ""content"": ""Thank you. ""
     }
   ]
-}",Agent stopped due to iteration limit or time limit.
+}","[
+    {
+        'chatId': 'CH08b5d7d8e7eb41af8d825bdab0a6a03c',
+        'medical_facilities_list': {
+            'Supposed_To_Be_Called': false,
+            'numberTimes_Supposed_To_Be_Called': 0,
+            'reason_Supposed_To_Be_Called': 'The consumer did not explicitly request information about medical facilities or insurance coverage, and the bot and agent provided guidance without needing additional facility information.'
+        }
+    }
+]"
 CH0b311abd7f9848beb04fd2c3b9b21ef1,"{
   ""chat_id"": ""CH0b311abd7f9848beb04fd2c3b9b21ef1"",
   ""participants"": [
@@ -945,7 +954,7 @@ CH0c09e28d316a4bbb9b3ccd2a20dfc9b2,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': false,
             'numberTimes_Supposed_To_Be_Called': 0,
-            'reason_Supposed_To_Be_Called': ''
+            'reason_Supposed_To_Be_Called': 'The conversation was handled entirely by an agent without any bot interaction.'
         }
     }
 ]"
@@ -1108,7 +1117,7 @@ CH0ce6a360c5c949c2a52905a8f077f823,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': true,
             'numberTimes_Supposed_To_Be_Called': 1,
-            'reason_Supposed_To_Be_Called': 'Consumer requested alternative medical facilities as the current clinic is not covered by insurance.'
+            'reason_Supposed_To_Be_Called': 'The consumer requested information on alternative clinics as the current clinic was not covered by insurance.'
         }
     }
 ]"
@@ -1187,7 +1196,7 @@ CH0dc4f033e1294f88936f2a5d37b4b2a9,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': true,
             'numberTimes_Supposed_To_Be_Called': 1,
-            'reason_Supposed_To_Be_Called': 'The consumer requested to see a doctor, prompting the need to provide information on nearby medical facilities.'
+            'reason_Supposed_To_Be_Called': 'The consumer explicitly requested to see a doctor, which requires providing information about medical facilities.'
         }
     }
 ]"
@@ -1374,7 +1383,7 @@ CH0ea81e5108e445c29d9235d25c148e94,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': true,
             'numberTimes_Supposed_To_Be_Called': 1,
-            'reason_Supposed_To_Be_Called': 'The consumer requested medical assistance and provided their location, indicating a need for a medical facility recommendation.'
+            'reason_Supposed_To_Be_Called': 'The consumer requested medical assistance and provided their location, indicating a need to find nearby clinics.'
         }
     }
 ]"
@@ -1560,8 +1569,8 @@ CH0edda7484aee488e8f03254bfb37025a,"{
         'chatId': 'CH0edda7484aee488e8f03254bfb37025a',
         'medical_facilities_list': {
             'Supposed_To_Be_Called': true,
-            'numberTimes_Supposed_To_Be_Called': 2,
-            'reason_Supposed_To_Be_Called': 'The consumer requested information about medical facilities multiple times, and the bot provided such information, indicating the tool should have been called.'
+            'numberTimes_Supposed_To_Be_Called': 1,
+            'reason_Supposed_To_Be_Called': 'The consumer requested information about nearby medical facilities, and the bot provided a list of clinics, which aligns with the conditions for using the tool.'
         }
     }
 ]"
@@ -1629,7 +1638,7 @@ CH107c011f5f514e7ab2f93d4b58024f4a,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': false,
             'numberTimes_Supposed_To_Be_Called': 0,
-            'reason_Supposed_To_Be_Called': ''
+            'reason_Supposed_To_Be_Called': 'The conversation was about insurance coverage for specific clinics, not about finding or recommending medical facilities.'
         }
     }
 ]"
@@ -1751,7 +1760,7 @@ CH123693a1637743f98319b4034ac77857,"{
         ""medical_facilities_list"": {
             ""Supposed_To_Be_Called"": false,
             ""numberTimes_Supposed_To_Be_Called"": 0,
-            ""reason_Supposed_To_Be_Called"": ""The conversation did not include any requests or context that required the 'medical_facilities_list' tool to be called. The consumer was informing about her pregnancy and did not request information about medical facilities.""
+            ""reason_Supposed_To_Be_Called"": ""No conditions or requests in the conversation required the 'medical_facilities_list' tool to be called.""
         }
     }
 ]"
@@ -2034,8 +2043,8 @@ CH1279ed088f0b4a4bad90da5d64560309,"{
         'chatId': 'CH1279ed088f0b4a4bad90da5d64560309',
         'medical_facilities_list': {
             'Supposed_To_Be_Called': true,
-            'numberTimes_Supposed_To_Be_Called': 1,
-            'reason_Supposed_To_Be_Called': 'Consumer requested information about hospitals and clinics covered by insurance.'
+            'numberTimes_Supposed_To_Be_Called': 2,
+            'reason_Supposed_To_Be_Called': 'The consumer asked about hospitals and clinics covered by insurance multiple times, indicating a need for the medical facilities list.'
         }
     }
 ]"
@@ -2071,7 +2080,7 @@ CH133be419ce184ad29488fc41bdcd1f4d,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': false,
             'numberTimes_Supposed_To_Be_Called': 0,
-            'reason_Supposed_To_Be_Called': 'The conversation does not involve a bot, only a consumer and system, so the tool should not be called.'
+            'reason_Supposed_To_Be_Called': 'The conversation does not involve a bot, and thus the tool should not be called.'
         }
     }
 ]"
@@ -2108,7 +2117,16 @@ CH14d2dadc1535456dac866734508d51c2,"{
       ""content"": ""I hope I was able to assist you today. If you have any further concerns or your maid ever feels unwell, donât hesitate to reach out. I'm always here to help!:blush:""
     }
   ]
-}",Agent stopped due to iteration limit or time limit.
+}","[
+    {
+        ""chatId"": ""CH14d2dadc1535456dac866734508d51c2"",
+        ""medical_facilities_list"": {
+            ""Supposed_To_Be_Called"": false,
+            ""numberTimes_Supposed_To_Be_Called"": 0,
+            ""reason_Supposed_To_Be_Called"": """"
+        }
+    }
+]"
 CH1513e4bc4a224b11b97a685e4c4b3cef,"{
   ""chat_id"": ""CH1513e4bc4a224b11b97a685e4c4b3cef"",
   ""participants"": [
@@ -2232,7 +2250,16 @@ CH1513e4bc4a224b11b97a685e4c4b3cef,"{
       ""content"": ""I hope I was able to assist you today. If you ever need help or feel unwell, please let me know right away. Itâs important to speak up so we can guide you and make sure you have all the information and support you need. Iâm always here to help! :blush:\r\n\r\n:muscle: Stay Safe While You Work\r\nProtect your body when working. Bend your knees (not your back) when lifting heavy things. Use both hands to carry items. Stand up straight to avoid pain or injury.""
     }
   ]
-}",Agent stopped due to iteration limit or time limit.
+}","[
+    {
+        ""chatId"": ""CH1513e4bc4a224b11b97a685e4c4b3cef"",
+        ""medical_facilities_list"": {
+            ""Supposed_To_Be_Called"": true,
+            ""numberTimes_Supposed_To_Be_Called"": 1,
+            ""reason_Supposed_To_Be_Called"": ""The bot transitioned to recommending medical facilities after gathering initial symptom information from the consumer.""
+        }
+    }
+]"
 CH15d35f780cc74bf7b6300a41920c9ed1,"{
   ""chat_id"": ""CH15d35f780cc74bf7b6300a41920c9ed1"",
   ""participants"": [
@@ -2818,11 +2845,10 @@ CH15d35f780cc74bf7b6300a41920c9ed1,"{
         ""medical_facilities_list"": {
             ""Supposed_To_Be_Called"": false,
             ""numberTimes_Supposed_To_Be_Called"": 0,
-            ""reason_Supposed_To_Be_Called"": ""The conversation was handled by an agent without any bot interaction, and the consumer did not explicitly request a list of medical facilities.""
+            ""reason_Supposed_To_Be_Called"": ""The conversation was handled entirely by an agent without any bot involvement, so the tool should not be called.""
         }
     }
-]
-```"
+]"
 CH15eeffda8a6245b2b0586ac630873df7,"{
   ""chat_id"": ""CH15eeffda8a6245b2b0586ac630873df7"",
   ""participants"": [
@@ -2900,14 +2926,15 @@ CH16fb6fd437934357ba6d67faed7bc42e,"{
   ]
 }","[
     {
-        'chatId': 'CH16fb6fd437934357ba6d67faed7bc42e',
-        'medical_facilities_list': {
-            'Supposed_To_Be_Called': false,
-            'numberTimes_Supposed_To_Be_Called': 0,
-            'reason_Supposed_To_Be_Called': ''
+        ""chatId"": ""CH16fb6fd437934357ba6d67faed7bc42e"",
+        ""medical_facilities_list"": {
+            ""Supposed_To_Be_Called"": false,
+            ""numberTimes_Supposed_To_Be_Called"": 0,
+            ""reason_Supposed_To_Be_Called"": ""The conversation did not include any requests or conditions that require the use of the 'medical_facilities_list' tool. The consumer only inquired about insurance details.""
         }
     }
-]"
+]
+```"
 CH1a769e6128e14024aebbba54934e4cf2,"{
   ""chat_id"": ""CH1a769e6128e14024aebbba54934e4cf2"",
   ""participants"": [
@@ -3120,9 +3147,9 @@ CH1a769e6128e14024aebbba54934e4cf2,"{
     {
         'chatId': 'CH1a769e6128e14024aebbba54934e4cf2',
         'medical_facilities_list': {
-            'Supposed_To_Be_Called': true,
-            'numberTimes_Supposed_To_Be_Called': 1,
-            'reason_Supposed_To_Be_Called': 'Consumer expressed a desire to visit another clinic and mentioned ongoing symptoms, indicating a need for a medical facility recommendation.'
+            'Supposed_To_Be_Called': false,
+            'numberTimes_Supposed_To_Be_Called': 0,
+            'reason_Supposed_To_Be_Called': 'The conversation was handled by an agent before the bot could complete Phase 1 or transition to Phase 2, thus the tool should not be called.'
         }
     }
 ]"
@@ -3178,7 +3205,7 @@ CH1b2b76c98f3b4fe4ad04b000e139de18,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': false,
             'numberTimes_Supposed_To_Be_Called': 0,
-            'reason_Supposed_To_Be_Called': 'The consumer did not request a list of medical facilities or express a need for new facilities. The conversation was about past visits and coverage issues.'
+            'reason_Supposed_To_Be_Called': ''
         }
     }
 ]"
@@ -3426,7 +3453,7 @@ CH209559d5417045cca25ec70738806806,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': true,
             'numberTimes_Supposed_To_Be_Called': 1,
-            'reason_Supposed_To_Be_Called': 'The consumer reported stomach pain, and the bot provided a list of nearby medical facilities as part of the recommendation phase.'
+            'reason_Supposed_To_Be_Called': 'The bot gathered symptoms using the OLDCARTS method and then transitioned to Phase 2 by recommending a medical facility visit.'
         }
     }
 ]"
@@ -3472,12 +3499,13 @@ CH211ed4f4268e4fe187993b202752a490,"{
     {
         'chatId': 'CH211ed4f4268e4fe187993b202752a490',
         'medical_facilities_list': {
-            'Supposed_To_Be_Called': true,
-            'numberTimes_Supposed_To_Be_Called': 1,
-            'reason_Supposed_To_Be_Called': 'The consumer requested information about medical centers covered by their insurance, and the provided link was not working. This situation requires the tool to be called to provide the necessary information.'
+            'Supposed_To_Be_Called': false,
+            'numberTimes_Supposed_To_Be_Called': 0,
+            'reason_Supposed_To_Be_Called': 'The consumer requested a list of medical centers covered by insurance, which was appropriately handled by providing links. The database does not indicate that the tool should be called for such requests.'
         }
     }
-]"
+]
+```"
 CH22d3fadc29314527ab20866a00bd449a,"{
   ""chat_id"": ""CH22d3fadc29314527ab20866a00bd449a"",
   ""participants"": [
@@ -3607,7 +3635,7 @@ CH22d3fadc29314527ab20866a00bd449a,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': false,
             'numberTimes_Supposed_To_Be_Called': 0,
-            'reason_Supposed_To_Be_Called': 'The conversation did not include any requests or context that required the use of the medical_facilities_list tool.'
+            'reason_Supposed_To_Be_Called': ''
         }
     }
 ]"
@@ -3819,7 +3847,7 @@ CH2876ea59c6be49bea1f98fd277d6b2fb,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': true,
             'numberTimes_Supposed_To_Be_Called': 1,
-            'reason_Supposed_To_Be_Called': 'Consumer requested information about clinics covered by insurance.'
+            'reason_Supposed_To_Be_Called': 'The consumer asked about clinics covered by their insurance, which requires the use of the medical_facilities_list tool to provide the necessary information.'
         }
     }
 ]"
@@ -3935,7 +3963,7 @@ CH287e4f8062af4f10a707f079f2f982d6,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': false,
             'numberTimes_Supposed_To_Be_Called': 0,
-            'reason_Supposed_To_Be_Called': ''
+            'reason_Supposed_To_Be_Called': 'The conversation was handled by an agent, and the agent concluded that a clinic visit was not necessary.'
         }
     }
 ]"
@@ -4004,11 +4032,11 @@ CH2a95e005e99c46e4a3154eda0542d3a6,"{
   ]
 }","[
     {
-        'chatId': 'CH2a95e005e99c46e4a3154eda0542d3a6',
-        'medical_facilities_list': {
-            'Supposed_To_Be_Called': false,
-            'numberTimes_Supposed_To_Be_Called': 0,
-            'reason_Supposed_To_Be_Called': ''
+        ""chatId"": ""CH2a95e005e99c46e4a3154eda0542d3a6"",
+        ""medical_facilities_list"": {
+            ""Supposed_To_Be_Called"": true,
+            ""numberTimes_Supposed_To_Be_Called"": 1,
+            ""reason_Supposed_To_Be_Called"": ""The bot advised the consumer to visit a medical facility for the maid's ear pain, indicating a recommendation for a clinic visit.""
         }
     }
 ]"
@@ -4099,10 +4127,11 @@ CH2b2f868b05cc4bc1a89ba28e0d3d597f,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': false,
             'numberTimes_Supposed_To_Be_Called': 0,
-            'reason_Supposed_To_Be_Called': 'The conversation was handled entirely by an agent without any bot interaction.'
+            'reason_Supposed_To_Be_Called': 'The conversation was handled entirely by an Agent without any Bot involvement.'
         }
     }
-]"
+]
+```"
 CH2b8a4eabee704c47a8e44fcb2a4dddd6,"{
   ""chat_id"": ""CH2b8a4eabee704c47a8e44fcb2a4dddd6"",
   ""participants"": [
@@ -4238,7 +4267,7 @@ CH2b8a4eabee704c47a8e44fcb2a4dddd6,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': true,
             'numberTimes_Supposed_To_Be_Called': 1,
-            'reason_Supposed_To_Be_Called': 'Consumer explicitly requested to see a doctor and asked which hospital to go to, indicating a need for medical facility information.'
+            'reason_Supposed_To_Be_Called': 'The consumer explicitly requested to see a doctor and asked for a hospital recommendation due to stomach pain, diarrhea, and vomiting.'
         }
     }
 ]"
@@ -4326,11 +4355,11 @@ CH2c1b7c459e5c406b8462a8e803fd8a33,"{
   ]
 }","[
     {
-        ""chatId"": ""CH2c1b7c459e5c406b8462a8e803fd8a33"",
-        ""medical_facilities_list"": {
-            ""Supposed_To_Be_Called"": true,
-            ""numberTimes_Supposed_To_Be_Called"": 1,
-            ""reason_Supposed_To_Be_Called"": ""The consumer explicitly requested help finding a clinic in Ajman, and the bot offered to provide a list of covered clinics, indicating a need for the 'medical_facilities_list' tool.""
+        'chatId': 'CH2c1b7c459e5c406b8462a8e803fd8a33',
+        'medical_facilities_list': {
+            'Supposed_To_Be_Called': false,
+            'numberTimes_Supposed_To_Be_Called': 0,
+            'reason_Supposed_To_Be_Called': 'The consumer was already at a medical facility and did not explicitly request other facilities.'
         }
     }
 ]"
@@ -4459,11 +4488,11 @@ CH2f221539c94c4145abc6ec15a729c2a1,"{
   ]
 }","[
     {
-        'chatId': 'CH2f221539c94c4145abc6ec15a729c2a1',
-        'medical_facilities_list': {
-            'Supposed_To_Be_Called': true,
-            'numberTimes_Supposed_To_Be_Called': 1,
-            'reason_Supposed_To_Be_Called': 'The consumer reported a high fever and urinary infection, and the bot requested the consumer\'s address to find nearby clinics, indicating a need to recommend medical facilities.'
+        ""chatId"": ""CH2f221539c94c4145abc6ec15a729c2a1"",
+        ""medical_facilities_list"": {
+            ""Supposed_To_Be_Called"": true,
+            ""numberTimes_Supposed_To_Be_Called"": 1,
+            ""reason_Supposed_To_Be_Called"": ""The consumer reported a high fever and urinary infection, which could require a clinic visit. The bot asked for the consumer's address to find the nearest clinics, indicating a need to call the 'medical_facilities_list' tool.""
         }
     }
 ]"
@@ -4514,11 +4543,11 @@ CH2f3bf74725f0459eac151b30cac450e3,"{
   ]
 }","[
     {
-        ""chatId"": ""CH2f3bf74725f0459eac151b30cac450e3"",
-        ""medical_facilities_list"": {
-            ""Supposed_To_Be_Called"": false,
-            ""numberTimes_Supposed_To_Be_Called"": 0,
-            ""reason_Supposed_To_Be_Called"": """"
+        'chatId': 'CH2f3bf74725f0459eac151b30cac450e3',
+        'medical_facilities_list': {
+            'Supposed_To_Be_Called': false,
+            'numberTimes_Supposed_To_Be_Called': 0,
+            'reason_Supposed_To_Be_Called': 'The conversation did not include any request or context that required recommending a medical facility.'
         }
     }
 ]"
@@ -4563,11 +4592,11 @@ CH31797791cf064f7c897f64b075ee9fa9,"{
   ]
 }","[
     {
-        ""chatId"": ""CH31797791cf064f7c897f64b075ee9fa9"",
-        ""medical_facilities_list"": {
-            ""Supposed_To_Be_Called"": false,
-            ""numberTimes_Supposed_To_Be_Called"": 0,
-            ""reason_Supposed_To_Be_Called"": """"
+        'chatId': 'CH31797791cf064f7c897f64b075ee9fa9',
+        'medical_facilities_list': {
+            'Supposed_To_Be_Called': false,
+            'numberTimes_Supposed_To_Be_Called': 0,
+            'reason_Supposed_To_Be_Called': 'No requests or context in the conversation required the use of the medical_facilities_list tool.'
         }
     }
 ]"
@@ -4610,7 +4639,7 @@ CH319bac5ef2be441b95986850a52db04b,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': false,
             'numberTimes_Supposed_To_Be_Called': 0,
-            'reason_Supposed_To_Be_Called': ''
+            'reason_Supposed_To_Be_Called': 'The conversation did not involve a bot, and there were no requests or context indicating a need for medical facilities.'
         }
     }
 ]"
@@ -4738,7 +4767,7 @@ CH31e7daf7ba874da098f13b45ea3afc55,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': false,
             'numberTimes_Supposed_To_Be_Called': 0,
-            'reason_Supposed_To_Be_Called': 'The conversation was primarily handled by an agent, and there were no direct requests for medical facilities that required the tool to be called by the bot.'
+            'reason_Supposed_To_Be_Called': 'The conversation was primarily handled by an agent, and the consumer did not explicitly request additional medical facilities beyond what was provided by the agent.'
         }
     }
 ]"
@@ -4848,7 +4877,7 @@ CH33c9503ecc8d474f9e33b329b8425a96,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': true,
             'numberTimes_Supposed_To_Be_Called': 1,
-            'reason_Supposed_To_Be_Called': 'Consumer requested information about medical facilities that accept their insurance without additional fees.'
+            'reason_Supposed_To_Be_Called': 'The consumer requested assistance in finding a clinic that accepts their insurance without additional fees.'
         }
     }
 ]"
@@ -4934,16 +4963,18 @@ CH34e9b2c5df8445bb855696f89ce8632c,"{
       ""content"": ""Al Bustan medical centre phone number: +97125560123\r\nLocation: https://maps.app.goo.gl/AJJqpEzgofRqtriTA\r\n\r\nYour maid can also can go to:\r\nHolistic Medical Centre (Khalifa City) - Abu Dhabi:\r\nhttps://maps.app.goo.gl/xNhzN4KYRVnUDmKM9 - +97126661567.\r\nCan you please give me more details about her health?""
     }
   ]
-}","[
-    {
-        'chatId': 'CH34e9b2c5df8445bb855696f89ce8632c',
-        'medical_facilities_list': {
-            'Supposed_To_Be_Called': true,
-            'numberTimes_Supposed_To_Be_Called': 1,
-            'reason_Supposed_To_Be_Called': 'Consumer requested information about hospitals and clinics covered in Abu Dhabi for a general doctor or ENT.'
-        }
+}","```json
+[
+  {
+    ""chatId"": ""CH34e9b2c5df8445bb855696f89ce8632c"",
+    ""medical_facilities_list"": {
+      ""Supposed_To_Be_Called"": true,
+      ""numberTimes_Supposed_To_Be_Called"": 1,
+      ""reason_Supposed_To_Be_Called"": ""Consumer requested information about covered hospitals and clinics in Abu Dhabi for a general doctor or ENT.""
     }
-]"
+  }
+]
+```"
 CH37e8896902cc4a73a30cff893b23219e,"{
   ""chat_id"": ""CH37e8896902cc4a73a30cff893b23219e"",
   ""participants"": [
@@ -5447,7 +5478,7 @@ CH388b9f6b75c74996bb2ade198fba03a2,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': true,
             'numberTimes_Supposed_To_Be_Called': 1,
-            'reason_Supposed_To_Be_Called': 'The consumer explicitly requested to see a doctor and provided their location for finding the nearest clinics.'
+            'reason_Supposed_To_Be_Called': 'The bot recommended a clinic visit after assessing persistent symptoms, indicating a need to provide nearby clinic options.'
         }
     }
 ]"
@@ -5588,11 +5619,11 @@ CH3b3f8e9e01ce4fc789db0e27feda1548,"{
   ]
 }","[
     {
-        'chatId': 'CH3b3f8e9e01ce4fc789db0e27feda1548',
-        'medical_facilities_list': {
-            'Supposed_To_Be_Called': true,
-            'numberTimes_Supposed_To_Be_Called': 1,
-            'reason_Supposed_To_Be_Called': 'Consumer asked for hospital information and provided their address, which requires recommending nearby medical facilities.'
+        ""chatId"": ""CH3b3f8e9e01ce4fc789db0e27feda1548"",
+        ""medical_facilities_list"": {
+            ""Supposed_To_Be_Called"": true,
+            ""numberTimes_Supposed_To_Be_Called"": 1,
+            ""reason_Supposed_To_Be_Called"": ""The consumer requested information about which hospital to visit for an OB-GYNE check-up, which requires recommending medical facilities.""
         }
     }
 ]"
@@ -5647,7 +5678,7 @@ CH3dcdf027d466482f81283d7ac0bc86d3,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': false,
             'numberTimes_Supposed_To_Be_Called': 0,
-            'reason_Supposed_To_Be_Called': 'No conditions were met that required the medical_facilities_list tool to be called. The conversation did not involve any medical emergencies, requests for medical facilities, or symptoms that needed assessment.'
+            'reason_Supposed_To_Be_Called': ''
         }
     }
 ]"
@@ -5673,7 +5704,8 @@ CH3f680f8336444d32a6a71af505abf914,"{
             'reason_Supposed_To_Be_Called': ''
         }
     }
-]"
+]
+```"
 CH40de085621024c0da807f890e4c258e3,"{
   ""chat_id"": ""CH40de085621024c0da807f890e4c258e3"",
   ""participants"": [
@@ -5818,11 +5850,11 @@ CH40de085621024c0da807f890e4c258e3,"{
   ]
 }","[
     {
-        'chatId': 'CH40de085621024c0da807f890e4c258e3',
-        'medical_facilities_list': {
-            'Supposed_To_Be_Called': false,
-            'numberTimes_Supposed_To_Be_Called': 0,
-            'reason_Supposed_To_Be_Called': ''
+        ""chatId"": ""CH40de085621024c0da807f890e4c258e3"",
+        ""medical_facilities_list"": {
+            ""Supposed_To_Be_Called"": false,
+            ""numberTimes_Supposed_To_Be_Called"": 0,
+            ""reason_Supposed_To_Be_Called"": ""The conversation was handled by an Agent before the Bot could complete Phase 1 or transition to Phase 2, where the tool might be called.""
         }
     }
 ]"
@@ -6172,7 +6204,7 @@ CH46b146050ff44287bfe4a20e6bb0a894,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': true,
             'numberTimes_Supposed_To_Be_Called': 1,
-            'reason_Supposed_To_Be_Called': 'The consumer was advised to visit a clinic for their symptoms, and the bot provided a list of nearby medical facilities.'
+            'reason_Supposed_To_Be_Called': 'The consumer was advised to visit a clinic based on their symptoms, and the bot provided a list of nearby medical facilities.'
         }
     }
 ]"
@@ -6337,11 +6369,11 @@ CH47237978899f4c50b291363fb0269366,"{
   ]
 }","[
     {
-        'chatId': 'CH47237978899f4c50b291363fb0269366',
-        'medical_facilities_list': {
-            'Supposed_To_Be_Called': true,
-            'numberTimes_Supposed_To_Be_Called': 1,
-            'reason_Supposed_To_Be_Called': 'The consumer requested information about medical facilities for a blood sugar check and high blood pressure, which are medical concerns requiring a clinic visit.'
+        ""chatId"": ""CH47237978899f4c50b291363fb0269366"",
+        ""medical_facilities_list"": {
+            ""Supposed_To_Be_Called"": true,
+            ""numberTimes_Supposed_To_Be_Called"": 1,
+            ""reason_Supposed_To_Be_Called"": ""The consumer requested information about nearby medical facilities for their maid's symptoms, which aligns with the conditions for using the 'medical_facilities_list' tool.""
         }
     }
 ]"
@@ -6401,8 +6433,9 @@ CH477ec2ab9560427b829f7937f48fef43,"{
         'chatId': 'CH477ec2ab9560427b829f7937f48fef43',
         'medical_facilities_list': {
             'Supposed_To_Be_Called': true,
-            'numberTimes_Supposed_To_Be_Called': 1,
-            'reason_Supposed_To_Be_Called': 'Consumer requested assistance in finding a clinic that accepts their insurance.'
+            'numberTimes_Supposed_To_Be_Called': 2,
+            'reason_Supposed_To_Be_Called': 'Consumer requested help finding a clinic that accepts their insurance, which requires the tool to be called to 
+provide information about covered clinics.'
         }
     }
 ]"
@@ -6483,11 +6516,11 @@ CH4ab912ca5c4b427aa1e7b48fe2836ec4,"{
   ]
 }","[
     {
-        'chatId': 'CH4ab912ca5c4b427aa1e7b48fe2836ec4',
-        'medical_facilities_list': {
-            'Supposed_To_Be_Called': false,
-            'numberTimes_Supposed_To_Be_Called': 0,
-            'reason_Supposed_To_Be_Called': ''
+        ""chatId"": ""CH4ab912ca5c4b427aa1e7b48fe2836ec4"",
+        ""medical_facilities_list"": {
+            ""Supposed_To_Be_Called"": false,
+            ""numberTimes_Supposed_To_Be_Called"": 0,
+            ""reason_Supposed_To_Be_Called"": ""No conditions or requests in the conversation required the 'medical_facilities_list' tool to be called.""
         }
     }
 ]"
@@ -6568,11 +6601,11 @@ CH4ad094d9cfe24540bd7369c5ce3827f5,"{
   ]
 }","[
     {
-        'chatId': 'CH4ad094d9cfe24540bd7369c5ce3827f5',
-        'medical_facilities_list': {
-            'Supposed_To_Be_Called': false,
-            'numberTimes_Supposed_To_Be_Called': 0,
-            'reason_Supposed_To_Be_Called': 'The conversation is still in Phase 1 of symptom gathering using the OLDCARTS method. No transition to Phase 2 or exceptions requiring immediate referral to a medical facility have been triggered.'
+        ""chatId"": ""CH4ad094d9cfe24540bd7369c5ce3827f5"",
+        ""medical_facilities_list"": {
+            ""Supposed_To_Be_Called"": false,
+            ""numberTimes_Supposed_To_Be_Called"": 0,
+            ""reason_Supposed_To_Be_Called"": ""The bot is still in the process of gathering symptoms and has not concluded that a clinic visit is necessary.""
         }
     }
 ]"
@@ -6661,9 +6694,9 @@ CH4b222a6ecc534f1eb24f3d942ae803de,"{
     {
         ""chatId"": ""CH4b222a6ecc534f1eb24f3d942ae803de"",
         ""medical_facilities_list"": {
-            ""Supposed_To_Be_Called"": false,
-            ""numberTimes_Supposed_To_Be_Called"": 0,
-            ""reason_Supposed_To_Be_Called"": """"
+            ""Supposed_To_Be_Called"": true,
+            ""numberTimes_Supposed_To_Be_Called"": 1,
+            ""reason_Supposed_To_Be_Called"": ""The consumer mentioned symptoms related to their eyes and requested an eye check-up, which could require a medical facility visit.""
         }
     }
 ]"
@@ -6682,14 +6715,15 @@ CH4e54dbfb77e24ac494ea9bc7e8ca1036,"{
   ]
 }","[
     {
-        'chatId': 'CH4e54dbfb77e24ac494ea9bc7e8ca1036',
-        'medical_facilities_list': {
-            'Supposed_To_Be_Called': false,
-            'numberTimes_Supposed_To_Be_Called': 0,
-            'reason_Supposed_To_Be_Called': 'The conversation does not include any requests or context that requires the use of the medical_facilities_list tool.'
+        ""chatId"": ""CH4e54dbfb77e24ac494ea9bc7e8ca1036"",
+        ""medical_facilities_list"": {
+            ""Supposed_To_Be_Called"": false,
+            ""numberTimes_Supposed_To_Be_Called"": 0,
+            ""reason_Supposed_To_Be_Called"": ""The conversation does not contain any requests or context that would require the 'medical_facilities_list' tool to be called.""
         }
     }
-]"
+]
+```"
 CH4e93fc47e4a64ab5808bca6f16576bb3,"{
   ""chat_id"": ""CH4e93fc47e4a64ab5808bca6f16576bb3"",
   ""participants"": [
@@ -6904,7 +6938,7 @@ CH4e93fc47e4a64ab5808bca6f16576bb3,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': false,
             'numberTimes_Supposed_To_Be_Called': 0,
-            'reason_Supposed_To_Be_Called': 'The consumer was already directed to a specific medical facility by the agent, and there was no explicit request for a list of medical facilities.'
+            'reason_Supposed_To_Be_Called': ''
         }
     }
 ]"
@@ -6941,7 +6975,7 @@ CH4ece0e87d587447c9398e9789fba9869,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': false,
             'numberTimes_Supposed_To_Be_Called': 0,
-            'reason_Supposed_To_Be_Called': ''
+            'reason_Supposed_To_Be_Called': 'The conversation did not include any requests or context that required the use of the medical_facilities_list tool.'
         }
     }
 ]"
@@ -6990,7 +7024,7 @@ CH4fccbb022d8f4e04927969aee93ed5d5,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': false,
             'numberTimes_Supposed_To_Be_Called': 0,
-            'reason_Supposed_To_Be_Called': 'The conversation did not include any explicit request for medical facilities, symptoms indicating a need for a medical facility, or any emergency situations that would require the tool to be called.'
+            'reason_Supposed_To_Be_Called': 'No explicit request or context requiring medical facilities list tool was present in the conversation.'
         }
     }
 ]"
@@ -7026,7 +7060,7 @@ CH50a12c7f13d0421c971cf237e4d7023f,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': false,
             'numberTimes_Supposed_To_Be_Called': 0,
-            'reason_Supposed_To_Be_Called': 'The conversation was handled by the System, not a Bot, and there was no explicit request for a medical facility.'
+            'reason_Supposed_To_Be_Called': 'The conversation did not meet the conditions for recommending a medical facility visit. The consumer inquired about medicine for a dry cough, which can be addressed with OTC medication recommendations.'
         }
     }
 ]"
@@ -7287,7 +7321,7 @@ CH5233ed7eba5445748c428b148501dab2,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': true,
             'numberTimes_Supposed_To_Be_Called': 1,
-            'reason_Supposed_To_Be_Called': 'The consumer reported high blood pressure and dizziness, which are medical concerns that require a recommendation for a medical facility visit.'
+            'reason_Supposed_To_Be_Called': 'The consumer reported high blood pressure and dizziness, prompting the bot to recommend visiting a medical facility.'
         }
     }
 ]"
@@ -7415,7 +7449,7 @@ CH53dc66eedee8426da4f59ab0bc535528,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': false,
             'numberTimes_Supposed_To_Be_Called': 0,
-            'reason_Supposed_To_Be_Called': 'The conversation did not explicitly request new medical facilities or indicate a need for a list of medical facilities beyond the insurance and test rejection discussion.'
+            'reason_Supposed_To_Be_Called': 'The conversation was primarily handled by an agent, and the bot did not engage in symptom gathering or recommendations.'
         }
     }
 ]"
@@ -7653,15 +7687,14 @@ CH55b7d3885e45474a9c084a4464923c78,"{
   ]
 }","[
     {
-        ""chatId"": ""CH55b7d3885e45474a9c084a4464923c78"",
-        ""medical_facilities_list"": {
-            ""Supposed_To_Be_Called"": false,
-            ""numberTimes_Supposed_To_Be_Called"": 0,
-            ""reason_Supposed_To_Be_Called"": """"
+        'chatId': 'CH55b7d3885e45474a9c084a4464923c78',
+        'medical_facilities_list': {
+            'Supposed_To_Be_Called': false,
+            'numberTimes_Supposed_To_Be_Called': 0,
+            'reason_Supposed_To_Be_Called': ''
         }
     }
-]
-```"
+]"
 CH57a534f83a834d84903b58c7de4c8f32,"{
   ""chat_id"": ""CH57a534f83a834d84903b58c7de4c8f32"",
   ""participants"": [
@@ -7786,7 +7819,7 @@ CH57a644fde4114193b54a066af2975224,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': false,
             'numberTimes_Supposed_To_Be_Called': 0,
-            'reason_Supposed_To_Be_Called': 'The conversation did not include any explicit request or context that required recommending a medical facility.'
+            'reason_Supposed_To_Be_Called': 'The conversation did not include any explicit request for medical facilities or conditions that require the tool to be called. The consumer was discussing insurance coverage issues and did not express a need for medical facility recommendations.'
         }
     }
 ]"
@@ -7903,11 +7936,11 @@ CH57d8e35cc99f40c78fe94a5117c47eda,"{
   ]
 }","[
     {
-        ""chatId"": ""CH57d8e35cc99f40c78fe94a5117c47eda"",
-        ""medical_facilities_list"": {
-            ""Supposed_To_Be_Called"": false,
-            ""numberTimes_Supposed_To_Be_Called"": 0,
-            ""reason_Supposed_To_Be_Called"": """"
+        'chatId': 'CH57d8e35cc99f40c78fe94a5117c47eda',
+        'medical_facilities_list': {
+            'Supposed_To_Be_Called': false,
+            'numberTimes_Supposed_To_Be_Called': 0,
+            'reason_Supposed_To_Be_Called': 'The bot determined that a clinic visit was not necessary and provided over-the-counter medication advice.'
         }
     }
 ]"
@@ -7930,7 +7963,7 @@ CH5a2b00a9bf134372b0477f6d02f0306e,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': false,
             'numberTimes_Supposed_To_Be_Called': 0,
-            'reason_Supposed_To_Be_Called': 'The conversation is handled entirely by an agent without any bot interaction, so the tool is not supposed to be called.'
+            'reason_Supposed_To_Be_Called': 'The conversation is handled entirely by an agent without any bot interaction, so the tool is never supposed to be called.'
         }
     }
 ]
@@ -7980,7 +8013,17 @@ CH5a66e36eed994644b8bb3b155b230f2a,"{
       ""content"": ""tole gargaarsa dabalataa yoo barbaaddan nu qunnamaa.""
     }
   ]
-}",Agent stopped due to iteration limit or time limit.
+}","[
+    {
+        'chatId': 'CH5a66e36eed994644b8bb3b155b230f2a',
+        'medical_facilities_list': {
+            'Supposed_To_Be_Called': false,
+            'numberTimes_Supposed_To_Be_Called': 0,
+            'reason_Supposed_To_Be_Called': 'The conversation was handled entirely by an Agent without any Bot involvement.'
+        }
+    }
+]
+```"
 CH5b420084ea264d1393889f93d349f3d5,"{
   ""chat_id"": ""CH5b420084ea264d1393889f93d349f3d5"",
   ""participants"": [
@@ -8068,11 +8111,10 @@ CH5b420084ea264d1393889f93d349f3d5,"{
         'medical_facilities_list': {
             'Supposed_To_Be_Called': true,
             'numberTimes_Supposed_To_Be_Called': 1,
-            'reason_Supposed_To_Be_Called': 'The consumer requested the location of a dental clinic for an appointment, which requires the tool to be called according to the database rules.'
+            'reason_Supposed_To_Be_Called': 'Consumer requested the location of a dental clinic, which requires the tool to provide the nearest clinics or a link to covered dental clinics.'
         }
     }
-]
-```"
+]"
 CH5b942c99abad48b5aa8c6e574f4a661b,"{
   ""chat_id"": ""CH5b942c99abad48b5aa8c6e574f4a661b"",
   ""participants"": [
@@ -8120,11 +8162,11 @@ CH5b942c99abad48b5aa8c6e574f4a661b,"{
   ]
 }","[
     {
-        ""chatId"": ""CH5b942c99abad48b5aa8c6e574f4a661b"",
-        ""medical_facilities_list"": {
-            ""Supposed_To_Be_Called"": false,
-            ""numberTimes_Supposed_To_Be_Called"": 0,
-            ""reason_Supposed_To_Be_Called"": """"
+        'chatId': 'CH5b942c99abad48b5aa8c6e574f4a661b',
+        'medical_facilities_list': {
+            'Supposed_To_Be_Called': false,
+            'numberTimes_Supposed_To_Be_Called': 0,
+            'reason_Supposed_To_Be_Called': 'The conversation did not include any health-related inquiries or symptoms that would require a referral to a medical facility.'
         }
     }
 ]"
@@ -8144,11 +8186,12 @@ CH5db485a90563414f9d063870a8b2e86e,"{
   ]
 }","[
     {
-        'chatId': 'CH5db485a90563414f9d063870a8b2e86e',
-        'medical_facilities_list': {
-            'Supposed_To_Be_Called': false,
-            'numberTimes_Supposed_To_Be_Called': 0,
-            'reason_Supposed_To_Be_Called': 'The conversation does not involve a bot, and there is no indication that the consumer is requesting information about medical facilities.'
+        ""chatId"": ""CH5db485a90563414f9d063870a8b2e86e"",
+        ""medical_facilities_list"": {
+            ""Supposed_To_Be_Called"": false,
+            ""numberTimes_Supposed_To_Be_Called"": 0,
+            ""reason_Supposed_To_Be_Called"": ""The conversation does not contain any explicit request or context that requires the 'medical_facilities_list' tool to be called. The message is not in a language that provides clear context for a medical facility recommendation.""
         }
     }
-]"
+]
+```"
