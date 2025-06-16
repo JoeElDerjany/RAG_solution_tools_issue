@@ -1,4 +1,4 @@
-from medical_facilities_list_agent import create_medical_facilities_list_agent
+from GraphRAG_func import createAgent
 import csv
 
 def csv_to_dict(filename):
@@ -10,10 +10,10 @@ def csv_to_dict(filename):
     return result
 
 def dict_to_csv(data_dict):
-    with open("BOT Tools Metrics - 12th June testing RAW - medical_facilities_list agent results.csv", mode='w', newline='', encoding='utf-8') as csvfile:
+    with open("BOT Tools Metrics - 12th June testing RAW - all tools agent results.csv", mode='w', newline='', encoding='utf-8') as csvfile:
         writer = csv.writer(csvfile)
         # Write header
-        writer.writerow(['conv_id', 'cleaned_conversation', 'transfer_chat_agent_output'])
+        writer.writerow(['conv_id', 'cleaned_conversation', 'agent_output'])
         
         # Write rows from dict values (tuples of size 3)
         for key in sorted(data_dict.keys()):
@@ -23,82 +23,45 @@ def dict_to_csv(data_dict):
 
 if __name__ == "__main__":
     chats = csv_to_dict("BOT Tools Metrics - 12th June testing RAW.csv")
-    agent = create_medical_facilities_list_agent()
+    agent = createAgent()
     # outputs = {}
     # for i in range(70):
     #     print(i)
     #     output = agent.invoke({'input': chats[i][1]})
     #     outputs[i] = (chats[i][0], chats[i][1], output['output'])
-    #     time.sleep(3)
     # dict_to_csv(outputs)
 
     print(agent.invoke({'input': """{
-  "chat_id": "CH0dc4f033e1294f88936f2a5d37b4b2a9",
+  "chat_id": "CH14d2dadc1535456dac866734508d51c2",
   "participants": [
-    "Bot",
+    "Agent",
     "Consumer",
     "System"
   ],
   "conversation": [
     {
-      "timestamp": "2025-06-11T23:52:56",
+      "timestamp": "2025-06-11T17:54:24",
+      "sender": "Agent",
+      "type": "normal message",
+      "content": "In case of emergencies, which are life-threatening cases like accidents, severe bleeding, heart attacks, or blood pressure higher than 200/100..you can take her to any hospital. and they will follow the emergency protocol \r\nBut it is always better to take her to a covered hospital \r\nThis is the hospital's link to know what hospitals are under the insurance network :\r\n:hotel: Hospitals: https://maids.page.link/rtBLkbr8YXN5V1yi8"
+    },
+    {
+      "timestamp": "2025-06-11T17:54:44",
       "sender": "Consumer",
       "type": "normal message",
-      "content": "Please i need to see the doctor :tired_face:"
+      "content": "Ok"
     },
     {
-      "timestamp": "2025-06-11T23:55:20",
-      "sender": "Bot",
+      "timestamp": "2025-06-11T17:55:18",
+      "sender": "Agent",
       "type": "normal message",
-      "content": "Here are the nearest covered Clinics to you:\r\n(1) Ajman Medical Center - Ajman\r\nAddress: https://www.google.com/maps?q=25.313055,55.5287426\r\nTelephone: 97167430088\r\n\r\n\r\n(2) Al Shamil Medical Centre LLC - Sharjah\r\nAddress: https://www.google.com/maps?q=25.3328059,55.4560571\r\nTelephone: 97165663343\r\n\r\n\r\n(3) Al Nahrain Specialty Medical Center (Al Nuaimia 2) - Ajman\r\nAddress: https://www.google.com/maps?q=25.386551,55.455428\r\nTelephone: 97167449144"
+      "content": "In any other case, your nanny should always visit the clinic first and have a check-up with the general doctor first. \r\nare you asking in general please?  or is your nanny sick?"
     },
     {
-      "timestamp": "2025-06-11T23:55:26",
-      "sender": "Bot",
+      "timestamp": "2025-06-11T18:29:28",
+      "sender": "Agent",
       "type": "normal message",
-      "content": "Hello, I am Doctor Mia. What symptoms are you experiencing?"
-    },
-    {
-      "timestamp": "2025-06-12T00:00:24",
-      "sender": "Consumer",
-      "type": "normal message",
-      "content": "Doctor mia mam i already told you about symptoms \r\nThe cutting itching i have in my private part"
-    },
-    {
-      "timestamp": "2025-06-12T00:00:58",
-      "sender": "Bot",
-      "type": "normal message",
-      "content": "When did the cutting pain and itching start?"
-    },
-    {
-      "timestamp": "2025-06-12T00:01:25",
-      "sender": "Consumer",
-      "type": "normal message",
-      "content": "Three weeks ago"
-    },
-    {
-      "timestamp": "2025-06-12T00:01:56",
-      "sender": "Bot",
-      "type": "normal message",
-      "content": "I have already provided you with the nearest clinics. Do you need any more help with the clinic information?"
-    },
-    {
-      "timestamp": "2025-06-12T00:03:21",
-      "sender": "Consumer",
-      "type": "normal message",
-      "content": "No thank alot i was just replying to you're messages you were asking"
-    },
-    {
-      "timestamp": "2025-06-12T00:03:45",
-      "sender": "Bot",
-      "type": "normal message",
-      "content": "I hope I was able to assist you today. If you ever need help or feel unwell, please let me know right away. ItÃ¢Â€Â™s important to speak up so we can guide you and make sure you have all the information and support you need. IÃ¢Â€Â™m always here to help! :blush:"
-    },
-    {
-      "timestamp": "2025-06-12T00:56:08",
-      "sender": "Bot",
-      "type": "normal message",
-      "content": "I hope I was able to assist you today. If you ever need help or feel unwell, please let me know right away. ItÃ¢Â€Â™s important to speak up so we can guide you and make sure you have all the information and support you need. IÃ¢Â€Â™m always here to help! :blush:\r\n\r\n:muscle: Stay Safe While You Work\r\nProtect your body when working. Bend your knees (not your back) when lifting heavy things. Use both hands to carry items. Stand up straight to avoid pain or injury."
+      "content": "I hope I was able to assist you today. If you have any further concerns or your maid ever feels unwell, donÃ¢Â€Â™t hesitate to reach out. I'm always here to help!:blush:"
     }
   ]
 }"""})['output'])
